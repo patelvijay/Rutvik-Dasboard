@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PATEL RUTVIK REDDY // UNSTOPPABLE 🚀</title>
+<style>
+:root {
+  --bg: #030712;
+  --card: rgba(15, 23, 42, 0.75);
+  --border: rgba(56, 189, 248, 0.25);
+  --neon-cyan: #22d3ee;
+  --neon-blue: #3b82f6;
+  --neon-purple: #a855f7;
+  --neon-gold: #f59e0b;
+  --neon-green: #10b981;
+  --neon-fire: #ef4444;
+  --text: #f8fafc;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 100% 50%, rgba(168, 85, 247, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(34, 211, 238, 0.2) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Background Canvas */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0; pointer-events: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero Header */
+header {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.player-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--neon-cyan);
+  padding: 10px 24px;
+  border-radius: 50px;
+  color: var(--neon-cyan);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+  animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 15px rgba(34, 211, 238, 0.3); transform: scale(1); }
+  100% { box-shadow: 0 0 35px rgba(34, 211, 238, 0.7); transform: scale(1.03); }
+}
+
+h1.player-name {
+  font-size: clamp(3rem, 9vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin: 25px 0 10px;
+  background: linear-gradient(135deg, #ffffff 30%, var(--neon-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
+}
+
+.status-quote {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: #94a3b8;
+  max-width: 700px;
+  margin-bottom: 40px;
+  line-height: 1.4;
+}
+
+.status-quote span {
+  color: var(--neon-cyan);
+  font-weight: 700;
+}
+
+/* Action Buttons */
+.cta-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-launch {
+  background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+  color: #020617;
+  padding: 18px 38px;
+  border-radius: 16px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(34, 211, 238, 0.5);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-launch:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(34, 211, 238, 0.8);
+}
+
+/* Section Styling */
+section { padding: 60px 0; }
+
+.section-head {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-head h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.section-head p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+/* Grid & Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.1, 0.5, 0.1, 1);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.card-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.card-value {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--neon-cyan);
+  margin: 10px 0 5px;
+}
+
+/* Animated Progress Bars */
+.progress-bar-bg {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-cyan));
+  width: 0%;
+  transition: width 1.8s cubic-bezier(0.1, 0.8, 0.1, 1);
+}
+
+/* Triple Rank 1 Cards Grid */
+.boss-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.boss-card {
+  background: linear-gradient(145deg, rgba(245, 158, 11, 0.08), rgba(15, 23, 42, 0.8));
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: 24px;
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.boss-card:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.3);
+  border-color: var(--neon-gold);
+}
+
+.boss-icon {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+}
+
+.boss-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.boss-score {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--neon-gold);
+  margin: 8px 0;
+}
+
+.rank-badge {
+  display: inline-block;
+  background: var(--neon-gold);
+  color: #000;
+  font-weight: 900;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* Timeline Battle Stream */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  align-items: center;
+  padding: 20px 28px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.timeline-item:hover {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: var(--neon-blue);
+  transform: translateX(6px);
+}
+
+.timeline-item::after {
+  content: '👆 TAP TO VIEW';
+  position: absolute;
+  right: 28px;
+  bottom: 6px;
+  font-size: 0.65rem;
+  color: var(--neon-cyan);
+  font-weight: 800;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.t-date { font-weight: 800; color: var(--neon-blue); font-size: 1.1rem; }
+.t-title { font-weight: 700; font-size: 1.1rem; }
+.t-score { font-weight: 900; font-size: 1.2rem; color: var(--neon-gold); padding-bottom: 8px; }
+
+/* Modal Popup Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(3, 7, 18, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  border: 2px solid var(--neon-cyan);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 500px;
+  padding: 32px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(34, 211, 238, 0.3);
+  transform: scale(0.85);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-box {
+  transform: scale(1);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 900;
+}
+
+.modal-header p {
+  color: var(--neon-cyan);
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.marks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.mark-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--border);
+  padding: 14px 18px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mark-subject {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #94a3b8;
+}
+
+.mark-value {
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--neon-cyan);
+}
+
+.mark-rank {
+  font-size: 0.75rem;
+  color: var(--neon-gold);
+  display: block;
+}
+
+.modal-footer {
+  text-align: center;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px dashed var(--neon-cyan);
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.modal-footer-score {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--neon-gold);
+}
+
+.modal-close-hint {
+  text-align: center;
+  color: #64748b;
+  font-size: 0.8rem;
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+/* Mission 270 Box */
+.mission-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+  border: 2px solid var(--neon-cyan);
+  border-radius: 30px;
+  padding: 40px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.mission-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 22px;
+  font-size: 1.15rem;
+}
+
+.mission-step-num {
+  background: var(--neon-cyan);
+  color: #000;
+  font-weight: 900;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+  .timeline-item { grid-template-columns: 1fr; gap: 8px; text-align: left; }
+  .t-score { justify-self: start; }
+  .marks-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+
+  <!-- HERO SECTION -->
+  <header>
+    <div class="player-tag">⚡ CLASS 8 • PREP CHAMPION ⚡</div>
+    <h1 class="player-name">PATEL RUTVIK REDDY</h1>
+    <p class="status-quote">
+      From <span>155 Marks</span> to <span>255 Marks</span> in two months. <br>
+      You are not just writing exams—you are dominating them.
+    </p>
+    <div class="cta-group">
+      <button class="btn-launch" onclick="launchPowerUp()">UNLOCK DASHBOARD 🚀</button>
+    </div>
+  </header>
+
+  <!-- OVERALL PROGRESS POWER METERS -->
+  <section id="stats">
+    <div class="section-head">
+      <h2>POWER METERS 📈</h2>
+      <p>Tracking rapid skill mastery across foundation exams</p>
+    </div>
+
+    <div class="grid">
+      <!-- Starting Level -->
+      <div class="card">
+        <div class="card-title">Initial Score (06 Jul)</div>
+        <div class="card-value" style="color: #94a3b8;">155<span style="font-size:1.5rem">/300</span></div>
+        <p style="color:#94a3b8">51.7% Score • Rank 31</p>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" data-width="51.7%" style="background: #64748b;"></div>
+        </div>
+      </div>
+
+      <!-- Current Peak -->
+      <div class="card" style="border-color: var(--neon-cyan);">
+        <div class="card-title" style="color: var(--neon-cyan)">Peak Score (21 Sep)</div>
+        <div class="card-value" id="peak-score-counter">0</div>
+        <p style="color: var(--neon-cyan); font-weight:bold;">85.0% Score • Rank 11 🔥</p>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" data-width="85%"></div>
+        </div>
+      </div>
+
+      <!-- Total Gain -->
+      <div class="card" style="border-color: var(--neon-gold);">
+        <div class="card-title" style="color: var(--neon-gold)">Power Increase</div>
+        <div class="card-value" style="color: var(--neon-gold)">+100</div>
+        <p style="color: var(--neon-gold); font-weight:bold;">Net Marks Growth</p>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" data-width="100%" style="background: linear-gradient(90deg, #f59e0b, #ef4444);"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIPLE RANK 1 MASTERY -->
+  <section>
+    <div class="section-head">
+      <h2 style="color: var(--neon-gold)">🏆 TRIPLE RANK 1 UNLOCKED</h2>
+      <p>Recorded during the 21-09-2026 Examination</p>
+    </div>
+
+    <div class="boss-grid">
+      <div class="boss-card">
+        <div class="boss-icon">🧮</div>
+        <h3>MATHEMATICS</h3>
+        <div class="boss-score">60 / 60</div>
+        <span class="rank-badge">RANK #1</span>
+      </div>
+
+      <div class="boss-card">
+        <div class="boss-icon">🧪</div>
+        <h3>CHEMISTRY</h3>
+        <div class="boss-score">60 / 60</div>
+        <span class="rank-badge">RANK #1</span>
+      </div>
+
+      <div class="boss-card">
+        <div class="boss-icon">🧬</div>
+        <h3>BIOLOGY</h3>
+        <div class="boss-score">60 / 60</div>
+        <span class="rank-badge">RANK #1</span>
+      </div>
+
+      <div class="boss-card" style="border-color: var(--neon-purple);">
+        <div class="boss-icon">💡</div>
+        <h3>IQ REASONING</h3>
+        <div class="boss-score" style="color: var(--neon-purple)">60 / 60</div>
+        <span class="rank-badge" style="background: var(--neon-purple); color:#fff">RANK #1 (17-Aug)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BATTLE LOG / TIMELINE -->
+  <section>
+    <div class="section-head">
+      <h2>BATTLE LOG ⚔️</h2>
+      <p>Tap any test to reveal subject-wise performance breakdown</p>
+    </div>
+
+    <div class="timeline-list">
+      <!-- 06 JUL EXAM -->
+      <div class="timeline-item" onclick="openExamModal('06-07-2026')">
+        <span class="t-date">06 JUL</span>
+        <span class="t-title">Foundation Exam</span>
+        <span class="t-score" style="color:#94a3b8">155/300 • Rank 31</span>
+      </div>
+
+      <!-- 17 AUG EXAM -->
+      <div class="timeline-item" onclick="openExamModal('17-08-2026')">
+        <span class="t-date">17 AUG</span>
+        <span class="t-title">Foundation Exam</span>
+        <span class="t-score">220/300 • Rank 15</span>
+      </div>
+
+      <!-- 24 AUG EXAM -->
+      <div class="timeline-item" style="border-color: var(--neon-blue); background: rgba(30, 58, 138, 0.3);" onclick="openExamModal('24-08-2026')">
+        <span class="t-date" style="color: var(--neon-cyan)">24 AUG</span>
+        <span class="t-title" style="color: #fff">JEE MAIN PATTERN ⚡</span>
+        <span class="t-score" style="color: var(--neon-cyan)">180/240 (75%) • Rank 6</span>
+      </div>
+
+      <!-- 31 AUG EXAM -->
+      <div class="timeline-item" onclick="openExamModal('31-08-2026')">
+        <span class="t-date">31 AUG</span>
+        <span class="t-title">JEE ADVANCED PATTERN</span>
+        <span class="t-score" style="color:#94a3b8">90/180 • Rank 21</span>
+      </div>
+
+      <!-- 21 SEP EXAM -->
+      <div class="timeline-item" style="border-color: var(--neon-gold); background: rgba(245, 158, 11, 0.1);" onclick="openExamModal('21-09-2026')">
+        <span class="t-date" style="color: var(--neon-gold)">21 SEP ⭐</span>
+        <span class="t-title" style="color: #fff; font-weight:800">Foundation Exam (Personal Best)</span>
+        <span class="t-score" style="color: var(--neon-gold); font-size:1.3rem">255/300 • Rank 11 🔥</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT MISSION 270+ -->
+  <section>
+    <div class="mission-card">
+      <div class="section-head" style="margin-bottom:25px">
+        <h2 style="color: var(--neon-cyan)">🎯 MISSION: BREAK 270+</h2>
+        <p>Your strategic roadmap to conquer the top ranks</p>
+      </div>
+
+      <div class="mission-step">
+        <div class="mission-step-num">1</div>
+        <div><strong>Protect Perfect Scores:</strong> Continue daily problem sets in Mathematics, Chemistry, and Biology to maintain your Rank 1 standing.</div>
+      </div>
+
+      <div class="mission-step">
+        <div class="mission-step-num">2</div>
+        <div><strong>Level-Up Physics:</strong> Deepen core conceptual understanding in Physics mechanics to achieve consistent top-10 finishes across all exam formats.</div>
+      </div>
+
+      <div class="mission-step">
+        <div class="mission-step-num">3</div>
+        <div><strong>Optimize IQ Strategy:</strong> Practice pattern recognition under timed conditions to eliminate careless mistakes on logic sections.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- MARKS BREAKDOWN MODAL -->
+<div class="modal-overlay" id="examModal" onclick="closeExamModal(event)">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-header">
+      <h3 id="modalExamTitle">Exam Scorecard</h3>
+      <p id="modalExamDate">Date: 06-07-2026</p>
+    </div>
+
+    <div class="marks-grid" id="modalMarksGrid">
+      <!-- Dynamic Marks Added via JavaScript -->
+    </div>
+
+    <div class="modal-footer">
+      <div style="font-size:0.85rem; color:#94a3b8; text-transform:uppercase; font-weight:700;">Overall Performance</div>
+      <div class="modal-footer-score" id="modalTotalScore">155 / 300</div>
+      <div style="color: var(--neon-cyan); font-weight:800; font-size:1rem;" id="modalRank">RANK #31</div>
+    </div>
+
+    <div class="modal-close-hint">Tap anywhere outside to close ✖</div>
+  </div>
+</div>
+
+<!-- Interactive Confetti & Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+// Exam Data Registry
+const examData = {
+  '06-07-2026': {
+    title: 'Foundation Exam',
+    date: '06-07-2026',
+    total: '155 / 300',
+    rank: 'RANK #31',
+    marks: [
+      { sub: 'Math', score: '35/60', rank: 'P.R: 18' },
+      { sub: 'Physics', score: '25/60', rank: 'C.R: 33' },
+      { sub: 'Chemistry', score: '25/60', rank: 'C.R: 42' },
+      { sub: 'IQ', score: '30/60', rank: 'I.R: 28' },
+      { sub: 'Biology', score: '40/60', rank: 'B.R: 34' }
+    ]
+  },
+  '17-08-2026': {
+    title: 'Foundation Exam',
+    date: '17-08-2026',
+    total: '220 / 300',
+    rank: 'RANK #15',
+    marks: [
+      { sub: 'Math', score: '40/60', rank: 'M.R: 17' },
+      { sub: 'Physics', score: '50/60', rank: 'P.R: 7' },
+      { sub: 'Chemistry', score: '25/60', rank: 'C.R: 26' },
+      { sub: 'IQ', score: '60/60', rank: 'I.R: 1 ⭐' },
+      { sub: 'Biology', score: '45/60', rank: 'B.R: 19' }
+    ]
+  },
+  '24-08-2026': {
+    title: 'JEE MAIN Exam',
+    date: '24-08-2026',
+    total: '180 / 240',
+    rank: 'RANK #6',
+    marks: [
+      { sub: 'Math', score: '58/80', rank: 'M.R: 5' },
+      { sub: 'Physics', score: '52/80', rank: 'P.R: 11' },
+      { sub: 'Chemistry', score: '70/80', rank: 'C.R: 5' }
+    ]
+  },
+  '31-08-2026': {
+    title: 'JEE ADVANCED Exam',
+    date: '31-08-2026',
+    total: '90 / 180',
+    rank: 'RANK #21',
+    marks: [
+      { sub: 'Physics', score: '18/60', rank: 'P.R: 28' },
+      { sub: 'Chemistry', score: '33/60', rank: 'C.R: 12' },
+      { sub: 'Math', score: '39/60', rank: 'M.R: 18' }
+    ]
+  },
+  '21-09-2026': {
+    title: 'Foundation Exam (Personal Best)',
+    date: '21-09-2026',
+    total: '255 / 300',
+    rank: 'RANK #11 🔥',
+    marks: [
+      { sub: 'Math', score: '60/60', rank: 'M.R: 1 🏆' },
+      { sub: 'Physics', score: '50/60', rank: 'P.R: 17' },
+      { sub: 'Chemistry', score: '60/60', rank: 'C.R: 1 🏆' },
+      { sub: 'IQ', score: '25/60', rank: 'I.R: 31' },
+      { sub: 'Biology', score: '60/60', rank: 'B.R: 1 🏆' }
+    ]
+  }
+};
+
+// Open Modal Handler
+function openExamModal(dateKey) {
+  playPowerUpSound();
+  const data = examData[dateKey];
+  if (!data) return;
+
+  document.getElementById('modalExamTitle').innerText = data.title;
+  document.getElementById('modalExamDate').innerText = 'Date: ' + data.date;
+  document.getElementById('modalTotalScore').innerText = data.total;
+  document.getElementById('modalRank').innerText = data.rank;
+
+  const grid = document.getElementById('modalMarksGrid');
+  grid.innerHTML = '';
+
+  data.marks.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'mark-card';
+    card.innerHTML = `
+      <div>
+        <div class="mark-subject">${item.sub}</div>
+        <span class="mark-rank">${item.rank}</span>
+      </div>
+      <div class="mark-value">${item.score}</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  document.getElementById('examModal').classList.add('active');
+}
+
+// Close Modal when tapping outside box
+function closeExamModal(event) {
+  const modalBox = document.getElementById('modalBox');
+  if (!modalBox.contains(event.target)) {
+    document.getElementById('examModal').classList.remove('active');
+  }
+}
+
+// Sound Synthesis
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playPowerUpSound() {
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+  const now = audioCtx.currentTime;
+  
+  const osc1 = audioCtx.createOscillator();
+  const gain1 = audioCtx.createGain();
+  osc1.type = 'triangle';
+  osc1.frequency.setValueAtTime(440, now);
+  osc1.frequency.exponentialRampToValueAtTime(880, now + 0.15);
+  gain1.gain.setValueAtTime(0.3, now);
+  gain1.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+  osc1.connect(gain1);
+  gain1.connect(audioCtx.destination);
+  osc1.start(now);
+  osc1.stop(now + 0.3);
+}
+
+function launchPowerUp() {
+  playPowerUpSound();
+  confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+  document.getElementById('stats').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Background Particle Canvas
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function initCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  particles = [];
+  for (let i = 0; i < 70; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 2 + 1,
+      color: ['#22d3ee', '#3b82f6', '#a855f7'][Math.floor(Math.random() * 3)],
+      speedY: Math.random() * -0.5 - 0.2
+    });
+  }
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = 0.4;
+    ctx.fill();
+    p.y += p.speedY;
+    if (p.y < 0) p.y = canvas.height;
+  });
+  requestAnimationFrame(drawParticles);
+}
+
+window.addEventListener('resize', initCanvas);
+initCanvas();
+drawParticles();
+
+// Scroll Animations
+let counterAnimated = false;
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+        bar.style.width = bar.getAttribute('data-width');
+      });
+
+      if (!counterAnimated) {
+        counterAnimated = true;
+        let count = 0;
+        const target = 255;
+        const duration = 1500;
+        const stepTime = duration / target;
+        
+        const timer = setInterval(() => {
+          count += 3;
+          if (count >= target) {
+            count = target;
+            clearInterval(timer);
+          }
+          document.getElementById('peak-score-counter').innerHTML = count + '<span style="font-size:1.5rem">/300</span>';
+        }, stepTime * 3);
+      }
+    }
+  });
+}, { threshold: 0.3 });
+
+observer.observe(document.getElementById('stats'));
+</script>
+
+</body>
+</html>
